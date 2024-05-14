@@ -27,6 +27,13 @@ var main = async () => {
     create unique index if not exists users_id_uindex on users (id);
   `)
 
+  await client.query(`
+    INSERT INTO users (email, name, password, administrator) VALUES
+    ('user@example.com', 'Regular User', 'userpassword', false),
+    ('admin@example.com', 'Administrator', 'adminpassword', true)
+    ON CONFLICT (email) DO NOTHING;
+  `);
+
   var app = express();
 
   app.set("view engine", "pug");
