@@ -17,7 +17,7 @@ based on https://github.com/samoylenko/vulnerable-app-nodejs-express
 ## Setup
 ```bash
 git clone https://github.com/SjoerdHHS/vulnerable-express-app.git
-cd tsp-vulnerable-app-nodejs-express
+cd vulnerable-express-app
 
 # Install dependencies
 npm i
