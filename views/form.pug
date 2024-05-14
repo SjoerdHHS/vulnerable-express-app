@@ -1,0 +1,42 @@
+html
+  head
+    title Update User
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js")
+    script.
+      $(document).ready(function() {
+        $('#updateUserForm').submit(function(event) {
+          event.preventDefault(); // Prevent form from submitting the default way
+
+          var userId = $('#userId').val();
+          var name = $('#name').val();
+          var email = $('#email').val();
+
+          $.ajax({
+            url: '/user/' + userId,
+            type: 'PATCH',
+            contentType: 'application/json',
+            data: JSON.stringify({ name: name, email: email }),
+            success: function(response) {
+              alert('User updated successfully');
+            },
+            error: function(xhr, status, error) {
+              alert('Error updating user: ' + xhr.responseText);
+            }
+          });
+        });
+      });
+  body
+    h1 Update User Information
+    p!= 'Hello, ' + name
+
+    form#updateUserForm
+      label(for="userId") User ID:
+      input#userId(type="text" name="userId" required)
+      br
+      label(for="name") Name:
+      input#name(type="text" name="name" required)
+      br
+      label(for="email") Email:
+      input#email(type="email" name="email" required)
+      br
+      button(type="submit") Update User
