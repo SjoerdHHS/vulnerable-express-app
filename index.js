@@ -10,7 +10,6 @@ var client = new Client({
   password: "SYAII2LWftDyY3ft",
   host: "localhost",
   port: 5432,
-  database: "hhs",
 })
 client.connect()
 
